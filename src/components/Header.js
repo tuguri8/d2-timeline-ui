@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Timeline from '@material-ui/icons/Timeline';
 import Search from '@material-ui/icons/Search';
+import Edit from '@material-ui/icons/Edit';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -22,6 +23,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function routeTimeline(event) {
+    document.location.href="/timeline";;
+}
+
 export default function Header() {
   const classes = useStyles();
 
@@ -40,16 +45,17 @@ export default function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
+                onClick={routeTimeline}
               >
                 <Timeline />
           </IconButton>
           <IconButton
-                aria-label="home"
+                aria-label="write post"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
               >
-                <AccountCircle />
+                <Edit />
           </IconButton>
           <IconButton
                 aria-label="search"
@@ -58,6 +64,14 @@ export default function Header() {
                 color="inherit"
               >
                 <Search />
+          </IconButton>
+          <IconButton
+                aria-label="home"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
           </IconButton>
           <Button color="inherit">로그아웃</Button>
         </Toolbar>
