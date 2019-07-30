@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({onSubmit, onChange, id, pw}) => {
+const Signup = ({onSubmit, onChange}) => {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
@@ -46,7 +46,7 @@ const Login = ({onSubmit, onChange, id, pw}) => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          로그인
+          회원가입
         </Typography>
         <form className={classes.form} onSubmit={onSubmit} noValidate>
           <TextField
@@ -66,10 +66,34 @@ const Login = ({onSubmit, onChange, id, pw}) => {
             margin="normal"
             required
             fullWidth
+            id="userName"
+            label="User Name"
+            name="userName"
+            autoComplete="userName"
+            autoFocus
+            onChange={onChange}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             name="password"
             label="Password"
             type="password"
             id="password"
+            autoComplete="current-password"
+            onChange={onChange}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="passwordAgain"
+            label="Type Password Again"
+            type="password"
+            id="passwordAgain"
             autoComplete="current-password"
             onChange={onChange}
           />
@@ -80,17 +104,12 @@ const Login = ({onSubmit, onChange, id, pw}) => {
             color="primary"
             className={classes.submit}
           >
-            로그인
+            회원가입
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="/" variant="body2">
+                로그인 하기
               </Link>
             </Grid>
           </Grid>
@@ -100,9 +119,7 @@ const Login = ({onSubmit, onChange, id, pw}) => {
   );
 };
 
-export default inject(({login}) => ({
-  onSubmit: login.onSubmit,
-  onChange: login.onChange,
-  id: login.id,
-  pw: login.pw
-}))(observer(Login));
+export default inject(({signup}) => ({
+  onSubmit: signup.onSubmit,
+  onChange: signup.onChange
+}))(observer(Signup));

@@ -1,10 +1,11 @@
 import { observable, action } from 'mobx';
 import * as authApi from '../api/Auth';
 
-export default class LoginStore {
+export default class SignupStore {
   @observable id = null;
+  @observable userName = null;
   @observable password = null;
-  @observable logged = false;
+  @observable passwordAgain = null;
 
   constructor(root) {
     this.root = root;
@@ -14,15 +15,16 @@ export default class LoginStore {
     event.preventDefault();
     const {id} = this;
     const {password} = this;
+    const {userName} = this;
     try {
-        const response = await authApi.login(id, password);
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        this.logged = true;
-        document.location.href="/signup"
+        const response = await authApi.signup(id, userName, password);
+        const signedName = response.data.userName;
+        alert(signedName);
+        document.location.href="/";
     } catch (e) {
-      alert('로그인에 실패하였습니다.');
+      alert('회원가입 에러');
       console.log(e.message);
+      document.location.href="/signup";
     }
   }
 
