@@ -32,6 +32,12 @@ function routePost(event) {
     document.location.href="/post";;
 }
 
+function logout(event) {
+  localStorage.removeItem("token")
+  alert('로그아웃 되었습니다');
+  document.location.href="/";;
+}
+
 export default function Header() {
   const classes = useStyles();
 
@@ -79,7 +85,7 @@ export default function Header() {
               >
                 <AccountCircle />
           </IconButton>
-          <Button color="inherit">로그아웃</Button>
+          <Button color="inherit" onClick={logout}>로그아웃</Button>
         </Toolbar>
       </AppBar>
     </div>
