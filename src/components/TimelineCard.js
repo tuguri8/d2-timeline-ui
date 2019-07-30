@@ -6,6 +6,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
+import { red } from '@material-ui/core/colors';
+import CardHeader from '@material-ui/core/CardHeader';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
 
 const useStyles = makeStyles({
   card: {
@@ -23,28 +30,49 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  avatar: {
+    backgroundColor: red[500],
+  },
 });
 
 const TimelineCard = ({ post }) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   const createdDate = post.createdDate;
-  const dateString = `${createdDate.monthValue}월 ${createdDate.dayOfMonth}일, ${createdDate.hour}:${createdDate.minute}`;
+  const dateString = `${createdDate.hour}시 ${createdDate.minute}분, ${createdDate.monthValue}월 ${createdDate.dayOfMonth}일`;
+  const userId = post.userId;
   return (
       <Card className={classes.card}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              {userId.charAt(0).toUpperCase()}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title= {
+            userId
+          }
+          subheader={
+            dateString
+          }
+        />
         <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {dateString}
-          </Typography>
-          <Typography className={classes.pos} variant="h5" component="h2">
-            {post.userId}
-          </Typography>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" color="textSecondary" component="p">
             {post.content}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
         </CardActions>
       </Card>
   );

@@ -23,7 +23,7 @@ class TimelineCardList extends Component {
       />
     ));
     return (
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
         <div className="list">
           {cardList}
         </div>
