@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({onSubmit, onChange}) => {
+const Login = ({onSubmit, onChange, id, pw}) => {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
@@ -102,5 +102,7 @@ const Login = ({onSubmit, onChange}) => {
 
 export default inject(({login}) => ({
   onSubmit: login.onSubmit,
-  onChange: login.onChange
+  onChange: login.onChange,
+  id: login.id,
+  pw: login.pw
 }))(observer(Login));

@@ -66,6 +66,18 @@ const Signup = ({onSubmit, onChange}) => {
             margin="normal"
             required
             fullWidth
+            id="userName"
+            label="User Name"
+            name="userName"
+            autoComplete="userName"
+            autoFocus
+            onChange={onChange}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             name="password"
             label="Password"
             type="password"
