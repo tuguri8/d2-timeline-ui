@@ -12,13 +12,10 @@ export default class PostStore {
     event.preventDefault();
     const {content} = this;
     try {
-        const response = await postApi.post(content);
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        this.logged = true;
-        document.location.href="/signup"
+        await postApi.posting(content);
+        this.content = '';
     } catch (e) {
-      alert('로그인에 실패하였습니다.');
+      alert('글쓰기에 실패하였습니다.');
       console.log(e.message);
     }
   }

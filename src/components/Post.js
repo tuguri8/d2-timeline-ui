@@ -3,9 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Edit from '@material-ui/icons/Edit';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -36,17 +34,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Post = ({onSubmit, onChange, id, pw}) => {
+const Post = ({onSubmit, onChange, contentValue}) => {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <Edit />
         </Avatar>
         <Typography component="h1" variant="h5">
-          로그인
+          글쓰기
         </Typography>
         <form className={classes.form} onSubmit={onSubmit} noValidate>
           <TextField
@@ -54,24 +52,15 @@ const Post = ({onSubmit, onChange, id, pw}) => {
             margin="normal"
             required
             fullWidth
-            id="id"
-            label="User Id"
-            name="id"
-            autoComplete="id"
+            multiline
+            rows="5"
+            id="content"
+            label="내용"
+            name="content"
+            autoComplete="content"
             autoFocus
             onChange={onChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={onChange}
+            value={contentValue}
           />
           <Button
             type="submit"
@@ -80,29 +69,16 @@ const Post = ({onSubmit, onChange, id, pw}) => {
             color="primary"
             className={classes.submit}
           >
-            로그인
+            글쓰기
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
     </Container>
   );
 };
 
-export default inject(({login}) => ({
-  onSubmit: login.onSubmit,
-  onChange: login.onChange,
-  id: login.id,
-  pw: login.pw
+export default inject(({post}) => ({
+  onSubmit: post.onSubmit,
+  onChange: post.onChange,
+  contentValue: post.content
 }))(observer(Post));
