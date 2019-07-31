@@ -36,6 +36,10 @@ function routeSearch(event) {
     document.location.href="/search";;
 }
 
+function routeHome(event) {
+    document.location.href="/home";;
+}
+
 function logout(event) {
   localStorage.removeItem("token")
   alert('로그아웃 되었습니다');
@@ -87,6 +91,7 @@ export default function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
+                onClick={routeHome}
               >
                 <AccountCircle />
           </IconButton>

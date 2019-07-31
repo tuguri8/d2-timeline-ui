@@ -11,3 +11,7 @@ export function posting(content) {
     content: content
   }, config);
 }
+
+export function getHomePost() {
+  return axios.get(`${BASE_URL}/api/post`, config);
+}

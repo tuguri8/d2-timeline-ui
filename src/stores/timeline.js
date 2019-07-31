@@ -12,9 +12,6 @@ export default class TimelineStore {
     try {
         const response = await timelineApi.getTimelinePost();
         this.posts = response.data;
-        console.log(this.posts);
-        // alert(signedName);
-        // document.location.href="/";
     } catch (e) {
       alert('Error');
       console.log(e.message);

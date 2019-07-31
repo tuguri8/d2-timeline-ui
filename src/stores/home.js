@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
-import * as homeApi from '../api/Home';
+import * as postApi from '../api/Post';
 
-export default class TimelineStore {
+export default class HomeStore {
   @observable posts = [];
 
   constructor(root) {
@@ -10,11 +10,8 @@ export default class TimelineStore {
 
   @action load = async () => {
     try {
-        const response = await homeApi.getHomePost();
+        const response = await postApi.getHomePost();
         this.posts = response.data;
-        console.log(this.posts);
-        // alert(signedName);
-        // document.location.href="/";
     } catch (e) {
       alert('Error');
       console.log(e.message);
