@@ -24,7 +24,6 @@ export default class SignupStore {
     } catch (e) {
       alert('회원가입 에러');
       console.log(e.message);
-      document.location.href="/signup";
     }
   }
 

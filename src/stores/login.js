@@ -19,7 +19,7 @@ export default class LoginStore {
         const token = response.data.token;
         localStorage.setItem("token", token);
         this.logged = true;
-        document.location.href="/signup"
+        document.location.href="/timeline"
     } catch (e) {
       alert('로그인에 실패하였습니다.');
       console.log(e.message);
