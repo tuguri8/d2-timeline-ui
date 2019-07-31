@@ -7,6 +7,7 @@ import Accessibility from '@material-ui/icons/Accessibility';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import UserList from './UserList';
 import { inject, observer } from 'mobx-react'; // 불러오기
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Search = ({onSubmit, onChange, userNameValue}) => {
+const Search = ({onSubmit, onChange, userNameValue, searched, users, followUser, unfollowUser}) => {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
@@ -70,6 +71,7 @@ const Search = ({onSubmit, onChange, userNameValue}) => {
             찾기
           </Button>
         </form>
+        {searched ? (<UserList users={users} followUser={followUser} unfollowUser={unfollowUser}/>) : (null)}
       </div>
     </Container>
   );
@@ -78,5 +80,9 @@ const Search = ({onSubmit, onChange, userNameValue}) => {
 export default inject(({search}) => ({
   onSubmit: search.onSubmit,
   onChange: search.onChange,
-  userNameValue: search.userName
+  userNameValue: search.userName,
+  searched: search.searched,
+  users: search.users,
+  followUser: search.followUser,
+  unfollowUser: search.unfollowUser,
 }))(observer(Search));
