@@ -40,13 +40,13 @@ const TimelineCard = ({ post }) => {
   const bull = <span className={classes.bullet}>•</span>;
   const createdDate = post.createdDate;
   const dateString = `${createdDate.hour}시 ${createdDate.minute}분, ${createdDate.monthValue}월 ${createdDate.dayOfMonth}일`;
-  const userId = post.userId;
+  const userName = post.userName;
   return (
       <Card className={classes.card}>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              {userId.charAt(0).toUpperCase()}
+              {userName.charAt(0).toUpperCase()}
             </Avatar>
           }
           action={
@@ -55,7 +55,7 @@ const TimelineCard = ({ post }) => {
             </IconButton>
           }
           title= {
-            userId
+            userName
           }
           subheader={
             dateString
