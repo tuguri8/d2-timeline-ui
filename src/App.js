@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Timeline from './components/Timeline';
-import PostTemplate from './components/PostTemplate'
+import PostTemplate from './components/PostTemplate';
+import SearchTemplate from './components/SearchTemplate'
 import './App.css';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/timeline" component={Timeline} />
           <Route exact path="/post" component={PostTemplate} />
+          <Route exact path="/search" component={SearchTemplate} />
         </Switch>
       </div>
     );

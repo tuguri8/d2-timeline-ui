@@ -32,6 +32,10 @@ function routePost(event) {
     document.location.href="/post";;
 }
 
+function routeSearch(event) {
+    document.location.href="/search";;
+}
+
 function logout(event) {
   localStorage.removeItem("token")
   alert('로그아웃 되었습니다');
@@ -74,6 +78,7 @@ export default function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
+                onClick={routeSearch}
               >
                 <Search />
           </IconButton>

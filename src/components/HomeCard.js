@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TimelineCard = ({ post }) => {
+const HomeCard = ({ post }) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   const createdDate = post.createdDate;
@@ -78,4 +78,4 @@ const TimelineCard = ({ post }) => {
   );
 }
 
-export default observer(TimelineCard);
+export default observer(HomeCard);
