@@ -109,7 +109,7 @@ const Signup = ({onSubmit, onChange}) => {
           <Grid container>
             <Grid item xs>
               <Link href="/" variant="body2">
-                로그인 하기
+                로그인
               </Link>
             </Grid>
           </Grid>
