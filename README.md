@@ -14,7 +14,7 @@
 ## Usage
 
 ```
-yarn add
+yarn install
 ```
 
 ```
